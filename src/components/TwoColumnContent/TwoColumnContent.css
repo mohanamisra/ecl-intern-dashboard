@@ -9,6 +9,9 @@
 
 .project-details {
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     flex: 5 1 auto;
 }
@@ -21,4 +24,9 @@
     justify-content: space-between;
 
     flex: 1 1 auto;
+}
+
+#Button {
+    border-radius: 25px;
+    background-color: green;
 }

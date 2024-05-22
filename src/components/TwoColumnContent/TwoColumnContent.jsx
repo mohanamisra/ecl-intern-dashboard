@@ -1,5 +1,7 @@
 import React from 'react';
 import './TwoColumnContent.css'
+import {TextField} from "@mui/material";
+import {Button} from "@mui/material";
 
 const TwoColumnContent = () => {
     return (
@@ -13,7 +15,8 @@ const TwoColumnContent = () => {
                 </div>
                 <h3>Daily Snapshot:</h3>
                 <div className ='daily-snapshot-container'>
-
+                    <TextField/>
+                    <Button variant = 'contained' id = "Button">Primary</Button>
                 </div>
             </div>
             <div className="right-sidebar">

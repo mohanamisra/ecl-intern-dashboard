@@ -1,23 +1,17 @@
 import React from 'react';
 import "./App.css"
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
+import Header from "./components/Header/Header.jsx";
+import TwoColumnContent
+    from "./components/TwoColumnContent/TwoColumnContent.jsx";
 
 const App = () => {
     return (
         <div className = "dashboard-container">
             <Sidebar/>
             <div className = "main">
-                <div className="header">
-
-                </div>
-                <div className="content">
-                    <div className="project-details">
-
-                    </div>
-                    <div className="right-sidebar">
-
-                    </div>
-                </div>
+                <Header/>
+                <TwoColumnContent/>
             </div>
         </div>
     );

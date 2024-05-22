@@ -1,0 +1,10 @@
+.header-container {
+    display: flex;
+    border: 1px solid black;
+    min-width: 100%;
+    justify-content: space-between;
+}
+
+.left {
+    display: flex;
+}

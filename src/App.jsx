@@ -1,4 +1,5 @@
 import React from 'react';
+import "./App.css"
 
 const App = () => {
     return (
@@ -15,7 +16,7 @@ const App = () => {
 
                     </div>
                     <div className="right-sidebar">
-                        
+
                     </div>
                 </div>
             </div>

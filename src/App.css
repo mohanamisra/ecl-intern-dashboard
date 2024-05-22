@@ -1,0 +1,45 @@
+.dashboard-container {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+}
+
+.main-sidebar {
+    background-color: darkgrey;
+    min-height: 100%;
+    flex: 1 1 auto;
+}
+
+.main {
+    background-color: red;
+    min-height: 100%;
+    flex: 4 1 auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: yellow;
+    flex: 1 1 auto;
+
+    min-height: 100px;
+}
+
+.content {
+    background-color: green;
+    flex: 4 1 auto;
+
+    display: flex;
+}
+
+.project-details {
+    background-color: white;
+    flex: 4 1 auto;
+}
+
+.right-sidebar {
+    background-color: blue;
+    flex: 1 1 auto;
+}

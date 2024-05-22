@@ -2,7 +2,7 @@ import React from 'react';
 
 const LogOut = () => {
     return (
-        <div>
+        <div className = 'logout-container'>
             LOGOUT
         </div>
     );

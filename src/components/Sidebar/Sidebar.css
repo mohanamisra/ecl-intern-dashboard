@@ -1,0 +1,13 @@
+.sidebar-container {
+    background-color: darkgrey;
+    max-width: 30%;
+    min-width: 336px;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: block;
+}

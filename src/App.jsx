@@ -1,12 +1,11 @@
 import React from 'react';
 import "./App.css"
+import Sidebar from "./components/Sidebar/Sidebar.jsx";
 
 const App = () => {
     return (
         <div className = "dashboard-container">
-            <div className = "main-sidebar">
-
-            </div>
+            <Sidebar/>
             <div className = "main">
                 <div className="header">
 

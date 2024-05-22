@@ -1,0 +1,24 @@
+.content-container {
+    background-color: green;
+    min-width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    flex-grow: 1;
+}
+
+.project-details {
+    background-color: white;
+
+    flex: 5 1 auto;
+}
+
+.right-sidebar {
+    background-color: blue;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    flex: 1 1 auto;
+}

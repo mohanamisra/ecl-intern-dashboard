@@ -1,7 +1,5 @@
 import React from 'react';
 import './TwoColumnContent.css'
-import {TextField} from "@mui/material";
-import {Button} from "@mui/material";
 
 const TwoColumnContent = () => {
     return (
@@ -20,8 +18,8 @@ const TwoColumnContent = () => {
                 <div className='snapshot-section'>
                     <h3 className = 'section-heading'>Daily Snapshot:</h3>
                     <div className='daily-snapshot-container'>
-                        <TextField id = 'textfield'/>
-                        <Button variant='contained' id="Button">Primary</Button>
+                        <textarea className = 'textfield'></textarea>
+                        <button className="button">Upload</button>
                     </div>
                 </div>
             </div>

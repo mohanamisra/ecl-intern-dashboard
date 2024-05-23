@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState} from "react";
 import './ToDoList.css'
+import TaskCard from "../TaskCard/TaskCard.jsx";
 
 const ToDoList = () => {
 
@@ -60,14 +61,11 @@ const ToDoList = () => {
                 </button>
             </div>
             <div className = 'tasks-container'>
-                <ol>
-                    {tasks.map((task, index) => (
-                        <li key ={index}>
-                            <span>{task.name}</span>
-                        </li>
-                        ))}
-
-                </ol>
+                {tasks.map((task, index) => {
+                    return (
+                        <TaskCard key = {index} name = {task.name} status = {task.completed}/>
+                    )
+                })}
             </div>
         </div>
     );

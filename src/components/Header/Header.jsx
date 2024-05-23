@@ -9,9 +9,9 @@ const Header = () => {
                 <div className = 'image-container'>
                     <img src={dp} alt=""/>
                 </div>
-                <div className = 'welcome'>Hello Jane Doe!</div>
+                <div className = 'welcome'>Hello, Jane Doe</div>
             </div>
-            <div className = "right">Wed, 22nd May, 2024</div>
+            <div className = "right date">Wed, 22nd May, 2024</div>
         </div>
     );
 };

@@ -1,14 +1,58 @@
 .sidebar-container {
-    background-color: darkgrey;
+    background-color: #2D3319;
     max-width: 15%;
     min-width: 300px;
     min-height: 100vh;
+
+    color: #D6E5E3;
+    font-family: bold;
+
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding: 8px;
+
+    border-top-right-radius: 1%;
+    border-bottom-right-radius: 1%;
 }
 
 ul {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
-li {
+.Link {
     display: block;
+    color: #D6E5E3;
+    font-size: 20px;
+    text-decoration: none;
+    opacity: 80%;
+
+    padding-left: 40px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.Link:hover {
+    opacity: 100%;
+    background-color: #D6E5E3;
+    color: #2D3319;
+    border-radius: 2%;
+}
+
+.sidebar-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 16px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+#dashboard-icon {
+    font-size: 40px;
 }

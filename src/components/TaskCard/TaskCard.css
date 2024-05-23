@@ -1,0 +1,31 @@
+.task-card {
+    background-color: #509d32;
+    color: #D6E5E3;
+    width: 240px;
+
+    border-radius: 10px;
+
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.task-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-name {
+    font-weight: 700;
+    color: white;
+    font-size: 18px;
+    text-align: justify;
+}
+
+.checkbox {
+    min-width: 25px;
+    margin-right: 8px;
+}

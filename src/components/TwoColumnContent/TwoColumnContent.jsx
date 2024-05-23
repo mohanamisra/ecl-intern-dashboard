@@ -7,21 +7,27 @@ const TwoColumnContent = () => {
     return (
         <div className="content-container">
             <div className="project-details">
-                <h3>Your Project</h3>
-                <h1>XYZ Project Name</h1>
-                <h3>Today's Goals:</h3>
-                <div className = 'daily-goals-container'>
-
+                <div className='project-basic'>
+                    <h3 className = 'section-heading'>Your Project</h3>
+                    <h1 className = 'project-name'>Intern Management Dashboard</h1>
                 </div>
-                <h3>Daily Snapshot:</h3>
-                <div className ='daily-snapshot-container'>
-                    <TextField/>
-                    <Button variant = 'contained' id = "Button">Primary</Button>
+                <div className='goals-section'>
+                    <h3 className='section-heading'>Today's Goals:</h3>
+                    <div className='daily-goals-container'>
+
+                    </div>
+                </div>
+                <div className='snapshot-section'>
+                    <h3 className = 'section-heading'>Daily Snapshot:</h3>
+                    <div className='daily-snapshot-container'>
+                        <TextField id = 'textfield'/>
+                        <Button variant='contained' id="Button">Primary</Button>
+                    </div>
                 </div>
             </div>
             <div className="right-sidebar">
                 <div className="project-history">
-                    <h3 className = 'right-sidebar-heading'>Project History</h3>
+                    <h3 className='right-sidebar-heading'>Project History</h3>
                     <p>Started: </p>
                     <p>Projected End: </p>
                     <p>Tech Stack: </p>

@@ -6,8 +6,9 @@
     flex-grow: 1;
 
     padding: 8px;
+    padding-left: 16px;
 
-    color: #2d2d2d;
+    color: #2f2f2f;
 }
 
 .project-details {
@@ -17,6 +18,16 @@
     justify-content: space-between;
 
     flex: 8 1 auto;
+}
+
+.section-heading {
+    opacity: 90%;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.project-name {
+    font-size: 40px;
 }
 
 .right-sidebar {

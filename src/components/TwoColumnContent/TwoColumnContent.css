@@ -1,10 +1,13 @@
 .content-container {
-    background-color: green;
     min-width: 100%;
     display: flex;
     justify-content: space-between;
 
     flex-grow: 1;
+
+    padding: 8px;
+
+    color: #2d2d2d;
 }
 
 .project-details {
@@ -13,17 +16,32 @@
     flex-direction: column;
     justify-content: space-between;
 
-    flex: 5 1 auto;
+    flex: 8 1 auto;
 }
 
 .right-sidebar {
-    background-color: blue;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     flex: 1 1 auto;
+
+    border-left: 2px solid #D6E5E3;
+    padding-left: 16px;
+
+    padding-bottom: 8px;
+}
+
+.project-history {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    font-size: 16px;
+}
+
+.right-sidebar-heading {
+    font-size: 20px;
 }
 
 #Button {

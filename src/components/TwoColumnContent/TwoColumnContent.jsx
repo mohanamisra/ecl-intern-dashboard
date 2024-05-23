@@ -21,13 +21,13 @@ const TwoColumnContent = () => {
             </div>
             <div className="right-sidebar">
                 <div className="project-history">
-                    <h3>Project History</h3>
+                    <h3 className = 'right-sidebar-heading'>Project History</h3>
                     <p>Started: </p>
                     <p>Projected End: </p>
                     <p>Tech Stack: </p>
                 </div>
                 <div className="team-members">
-                    <h3>Team Members</h3>
+                    <h3 className = 'right-sidebar-heading'>Team Members</h3>
                     <p>John Doe</p>
                     <p>Alice Doe</p>
                 </div>

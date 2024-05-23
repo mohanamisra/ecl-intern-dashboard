@@ -63,6 +63,8 @@
     border: 2px solid #2D3319;
 }
 
+/*RIGHT SIDEBAR STYLING*/
+
 .right-sidebar {
     display: flex;
     flex-direction: column;

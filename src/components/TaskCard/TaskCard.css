@@ -9,6 +9,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 8px;
 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -21,11 +22,22 @@
 .task-name {
     font-weight: 700;
     color: white;
-    font-size: 18px;
+    font-size: 16px;
     text-align: justify;
 }
 
 .checkbox {
     min-width: 25px;
     margin-right: 8px;
+}
+
+.delete-button {
+    min-width: 64px;
+    font-weight: 500;
+    color: red;
+    border: none;
+    border-radius: 25px;
+    min-height: 25px;
+    cursor: pointer;
+    align-self: center;
 }

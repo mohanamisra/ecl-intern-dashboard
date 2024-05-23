@@ -1,5 +1,6 @@
 import React from 'react';
 import './TwoColumnContent.css'
+import ToDoList from "../ToDoList/ToDoList.jsx";
 
 const TwoColumnContent = () => {
     return (
@@ -12,7 +13,7 @@ const TwoColumnContent = () => {
                 <div className='goals-section'>
                     <h3 className='section-heading'>Today's Goals:</h3>
                     <div className='daily-goals-container'>
-
+                        <ToDoList/>
                     </div>
                 </div>
                 <div className='snapshot-section'>

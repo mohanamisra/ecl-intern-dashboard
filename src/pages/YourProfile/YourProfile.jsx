@@ -10,7 +10,7 @@ const YourProfile = () => {
             <div className="main">
                 <Header/>
                 <div className = 'content-section'>
-                    
+
                 </div>
             </div>
         </div>

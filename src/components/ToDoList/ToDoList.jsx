@@ -45,8 +45,14 @@ const ToDoList = () => {
         setTasks(newTaskList);
     }
 
-    function deleteTask(index) {
-        console.log(`delete task number ${index}`)
+    function deleteTask(delIndex) {
+        if(window.confirm("Are you sure you want to delete this task?")) {
+            setTasks(tasks.filter(task => {
+                    if (task.taskId !== delIndex)
+                        return task;
+                }
+            ))
+        }
     }
 
     function doneTask(index) {

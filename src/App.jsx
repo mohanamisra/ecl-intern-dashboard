@@ -1,10 +1,7 @@
 import React from 'react';
 import "./App.css"
-import Sidebar from "./components/Sidebar/Sidebar.jsx";
-import Header from "./components/Header/Header.jsx";
-import TwoColumnContent
-    from "./components/TwoColumnContent/TwoColumnContent.jsx";
 
+import Login from "./pages/Login/Login.jsx"
 import Feedback from "./pages/Feedback/Feedback.jsx"
 import YourProfile from "./pages/YourProfile/YourProfile.jsx"
 import ProjectGoals from "./pages/ProjectGoals/ProjectGoals.jsx"
@@ -19,6 +16,7 @@ const App = () => {
         <div className = "app-container">
             <Routes>
                 <Route path = "/" element = {<Home/>}/>
+                <Route path = "/login" element = {<Login/>}/>
                 <Route path = "/home" element = {<Home/>}/>
                 <Route path="/projectgoals" element = {<ProjectGoals/>}/>
                 <Route path="/feedback" element = {<Feedback/>}/>

@@ -29,14 +29,15 @@ const ToDoList = () => {
     ]
 
     const [tasks, setTasks] = useState(myTasks);
-    const [newTask, setNewTask] = useState("");
+    const [newTaskName, setNewTaskName] = useState("");
 
     function handleInputChange(event) {
-        setNewTask(event.target.value);
+        setNewTaskName(event.target.value);
     }
 
     function addTask() {
-
+        const newTaskList = [...tasks, {name: newTaskName, completed: false}];
+        setTasks(newTaskList);
     }
 
     function deleteTask(index) {
@@ -53,7 +54,7 @@ const ToDoList = () => {
                 <input
                 type = 'text'
                 placeholder = 'Create task...'
-                value = {newTask}
+                value = {newTaskName}
                 onChange = {handleInputChange}
                 />
                 <button className = 'add-button' onClick = {addTask}>

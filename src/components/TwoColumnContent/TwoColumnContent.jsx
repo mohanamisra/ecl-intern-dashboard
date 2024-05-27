@@ -25,7 +25,7 @@ const TwoColumnContent = () => {
                     <h3 className = 'section-heading'>Daily Snapshot:</h3>
                     <div className='daily-snapshot-container'>
                         <textarea className = 'textfield'></textarea>
-                        <Button text = "Upload" buttonClass = "button" clickHandler = {handleUploadButtonClick}/>
+                        <Button text = "Upload" buttonClass = "upload button" clickHandler = {handleUploadButtonClick}/>
                     </div>
                 </div>
             </div>

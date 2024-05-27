@@ -11,7 +11,7 @@ const Password = ({ password, handlePassword }) => {
 
     return (
         <TextField
-            size="small"
+            size="small"    
             type={showPassword ? "text" : "password"}
             label="Enter password..."
             value={password}

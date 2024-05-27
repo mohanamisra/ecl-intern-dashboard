@@ -1,14 +1,24 @@
 import React from 'react';
-import {TextField} from "@mui/material";
 import Password from "../../components/Password/Password.jsx";
 import Button from "../../components/Button/Button.jsx"
+import {useState} from "react";
 import './Login.css'
 
 const Login = () => {
 
+    const [email, setEmail] = useState('');
+    const [newEmail, setNewEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     const handleLoginClick = () => {
-        console.log("LOGIN");
+        setEmail(newEmail);
+        console.log(email);
     }
+
+    const handleEmailChange = (e) => {
+        setNewEmail(e.target.value);
+    }
+
     return (
         <div className = 'login-container'>
             <div className="general-header">
@@ -17,8 +27,10 @@ const Login = () => {
             <form action="" className="login-form">
                 <h1 className = 'form-heading'>Intern Login</h1>
                 <div className = 'form-row'>
-                    <label htmlFor="name">Name: </label>
-                    <TextField label = "Enter name..." required = {true} size = 'small'/>
+                    <label htmlFor="email">Email: </label>
+                    <input type = "text" id = "email" required
+                           placeholder = "Enter email..." onChange={handleEmailChange}
+                            value = {newEmail}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="password">Password: </label>

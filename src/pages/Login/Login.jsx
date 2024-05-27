@@ -26,6 +26,7 @@ const Login = () => {
                 </div>
                 <Button text = "Login" buttonClass="login button" clickHandler={handleLoginClick}/>
                 <p>Forgot Password?</p>
+                <p>New User?</p>
             </form>
         </div>
     );

@@ -1,7 +1,10 @@
 .task-card {
     background-color: #509d32;
-    color: #D6E5E3;
+    color: white;
     width: 240px;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: justify;
 
     border-radius: 10px;
 
@@ -19,13 +22,6 @@
     justify-content: space-between;
 }
 
-.task-name {
-    font-weight: 700;
-    color: white;
-    font-size: 16px;
-    text-align: justify;
-}
-
 .checkbox {
     min-width: 25px;
     margin-right: 8px;
@@ -40,4 +36,10 @@
     min-height: 25px;
     cursor: pointer;
     align-self: center;
+}
+
+.task-card.checked {
+    background-color: #D6E5E3;
+    color: #509d32;
+    font-weight: 700;
 }

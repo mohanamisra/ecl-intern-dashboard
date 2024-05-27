@@ -8,11 +8,11 @@ const ToDoList = () => {
     const myTasks = [
         {
             name: 'Design landing page',
-            completed: true,
+            completed: false,
         },
         {
             name: 'Reach out to investors',
-            completed: true,
+            completed: false,
         },
         {
             name: 'Ideate colour theme',

@@ -1,14 +1,17 @@
 import React from 'react';
 import {TextField} from "@mui/material";
 import Password from "../../components/Password/Password.jsx";
-
+import Button from "../../components/Button/Button.jsx"
+import './Login.css'
 
 const Login = () => {
 
+    const handleLoginClick = () => {
+        console.log("LOGIN");
+    }
     return (
         <div className = 'login-container'>
             <div className="general-header">
-                Header
             </div>
 
             <form action="" className="login-form">
@@ -21,7 +24,7 @@ const Login = () => {
                     <label htmlFor="password">Password: </label>
                     <Password/>
                 </div>
-                <button>Login</button>
+                <Button text = "Login" buttonClass="login button" clickHandler={handleLoginClick}/>
                 <p>Forgot Password?</p>
             </form>
         </div>

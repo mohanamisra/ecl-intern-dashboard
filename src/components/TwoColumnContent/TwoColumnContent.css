@@ -43,26 +43,6 @@
     min-width: 75%;
     padding: 8px;
 }
-
-.button {
-    border-radius: 25px;
-    color: white;
-    font-size: 16px;
-    font-weight: 700;
-    min-width: 150px;
-    background-color: #509d32;
-    border-style: none;
-    cursor: pointer;
-
-    height: 50px;
-}
-
-.button:hover {
-    color: #509d32;
-    background-color: #D6E5E3;
-    border: 2px solid #2D3319;
-}
-
 /*RIGHT SIDEBAR STYLING*/
 
 .right-sidebar {

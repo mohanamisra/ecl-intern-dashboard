@@ -1,8 +1,13 @@
 import React from 'react';
 import './TwoColumnContent.css'
 import ToDoList from "../ToDoList/ToDoList.jsx";
+import Button from "../Button/Button.jsx";
 
 const TwoColumnContent = () => {
+    const handleUploadButtonClick = () => {
+        console.log("UPLOAD");
+    }
+
     return (
         <div className="content-container">
             <div className="project-details">
@@ -20,7 +25,7 @@ const TwoColumnContent = () => {
                     <h3 className = 'section-heading'>Daily Snapshot:</h3>
                     <div className='daily-snapshot-container'>
                         <textarea className = 'textfield'></textarea>
-                        <button className="button">Upload</button>
+                        <Button text = "Upload" buttonClass = "button" clickHandler = {handleUploadButtonClick}/>
                     </div>
                 </div>
             </div>

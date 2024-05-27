@@ -7,22 +7,27 @@ const ToDoList = () => {
 
     const myTasks = [
         {
+            taskId: 1,
             name: 'Design landing page',
             completed: false,
         },
         {
+            taskId: 2,
             name: 'Reach out to investors',
             completed: false,
         },
         {
+            taskId: 3,
             name: 'Ideate colour theme',
             completed: false,
         },
         {
+            taskId: 4,
             name: 'Make rudimentary to-do list for goals-section',
             completed: false,
         },
         {
+            taskId: 5,
             name: 'Email VC',
             completed: false,
         }
@@ -41,7 +46,7 @@ const ToDoList = () => {
     }
 
     function deleteTask(index) {
-
+        console.log(`delete task number ${index}`)
     }
 
     function doneTask(index) {
@@ -62,9 +67,9 @@ const ToDoList = () => {
                 </button>
             </div>
             <div className = 'tasks-container'>
-                {tasks.map((task, index) => {
+                {tasks.map((task) => {
                     return (
-                        <TaskCard key = {index} name = {task.name} status = {task.completed}/>
+                        <TaskCard key = {task.taskId} id = {task.taskId} name = {task.name} status = {task.completed} onDelete = {deleteTask}/>
                     )
                 })}
             </div>

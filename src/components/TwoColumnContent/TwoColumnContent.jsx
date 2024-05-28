@@ -55,8 +55,8 @@ const TwoColumnContent = () => {
             <div className="right-sidebar">
                 <div className="project-history">
                     <h3 className='right-sidebar-heading'>Project History</h3>
-                    <p>Started: </p>
-                    <p>Projected End: </p>
+                    <p>Started: {`${userDetails ? userDetails.startDate : ''}`}</p>
+                    <p>Projected End: {`${userDetails ? userDetails.endDate : ''}`}</p>
                     <p>Tech Stack: </p>
                 </div>
                 <div className="team-members">

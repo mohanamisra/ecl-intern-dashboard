@@ -31,6 +31,13 @@ const Header = () => {
         }))
     }
 
+    const getFirstName = (username) => {
+        if (!username) return '';
+        const firstWord = username.split(' ')[0];
+        return firstWord.charAt(0).toUpperCase() + firstWord.slice(1).toLowerCase();
+    };
+
+
     useEffect(() => {
         fetchUserData();
     }, []);
@@ -41,7 +48,7 @@ const Header = () => {
                 <div className = 'image-container'>
                     <img src={dp} alt=""/>
                 </div>
-                <div className = 'welcome'>{`Hello, ${userDetails ? userDetails.username : ''}`}</div>
+                <div className = 'welcome'>{`Hello, ${userDetails ? getFirstName(userDetails.username) : ''}`}</div>
             </div>
             <div className = "right date">{day}, {month} {dateNum}</div>
         </div>

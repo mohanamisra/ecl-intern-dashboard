@@ -3,6 +3,7 @@ import Password from "../../components/Password/Password.jsx";
 import Button from "../../components/Button/Button.jsx"
 import {useState} from "react";
 import './Login.css'
+import {Link} from "react-router-dom";
 
 const Login = () => {
 
@@ -38,7 +39,7 @@ const Login = () => {
                 </div>
                 <Button text = "Login" buttonClass="login button" clickHandler={handleLoginClick}/>
                 <p>Forgot Password?</p>
-                <p>New User?</p>
+                <p><Link to = "/register">New user?</Link></p>
             </form>
         </div>
     );

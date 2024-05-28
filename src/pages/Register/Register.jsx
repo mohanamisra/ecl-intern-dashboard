@@ -3,6 +3,7 @@ import {TextField} from "@mui/material";
 import Password from "../../components/Password/Password.jsx";
 import Button from "../../components/Button/Button.jsx"
 import './Register.css'
+import {Link} from "react-router-dom";
 
 const Register = () => {
 
@@ -46,7 +47,7 @@ const Register = () => {
                 </div>
                 <Button text="Register" buttonClass="register button"
                         clickHandler={handleLoginClick}/>
-                <p>Account already exists?</p>
+                <p><Link to = "/login">Account already exists?</Link></p>
             </form>
         </div>
     );

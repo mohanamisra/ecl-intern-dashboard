@@ -5,7 +5,18 @@ import {auth, db} from "../firebase.jsx"
 import {doc, getDoc} from "firebase/firestore"
 
 const Header = () => {
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+
     const [userDetails, setUserDetails] = useState(null);
+
+    const currentDate = new Date();
+    const day = days[currentDate.getDay()];
+    const month = months[currentDate.getMonth()];
+    const dateNum = currentDate.getDate();
 
     const fetchUserData = async() => {
         auth.onAuthStateChanged((async(user) => {
@@ -32,7 +43,7 @@ const Header = () => {
                 </div>
                 <div className = 'welcome'>{`Hello, ${userDetails ? userDetails.username : ''}`}</div>
             </div>
-            <div className = "right date">Wed, 22nd May, 2024</div>
+            <div className = "right date">{day}, {month} {dateNum}</div>
         </div>
     );
 };

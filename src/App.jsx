@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "./App.css"
 
 import Login from "./pages/Login/Login.jsx"
@@ -7,17 +7,25 @@ import YourProfile from "./pages/YourProfile/YourProfile.jsx"
 import ProjectGoals from "./pages/ProjectGoals/ProjectGoals.jsx"
 import LogOut from "./pages/LogOut/LogOut.jsx"
 import Home from "./pages/Home/Home.jsx"
-import Register from "./pages/Register/Register.jsx";
+import Register from "./pages/Register/Register.jsx"
+import {auth} from "./components/firebase.jsx"
 
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 
 
 const App = () => {
+    const [user, setUser] = useState();
+    useEffect(() => {
+        auth.onAuthStateChanged(user => {
+            setUser(user);
+        });
+    })
+
     return (
         <div className = "app-container">
             <Routes>
                 {/*<Route path = "/" element = {<Home/>}/>*/}
-                <Route path = "/" element = {<Login/>}/>
+                <Route path = "/" element = {user ? <Navigate to = "/home"/> : <Login/>}/>
                 <Route path = "/login" element = {<Login/>}/>
                 <Route path = "/register" element = {<Register/>}/>
                 <Route path = "/home" element = {<Home/>}/>

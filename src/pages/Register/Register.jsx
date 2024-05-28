@@ -15,11 +15,15 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [institute, setInstitute] = useState('');
     const [project, setProject] = useState('');
+    const [start, setStart] = useState('');
+    const [end, setEnd] = useState('');
 
     const [newName, setNewName] = useState('');
     const [newEmail, setNewEmail] = useState('');
     const [newInstitute, setNewInstitute] = useState('');
     const [newProject, setNewProject] = useState('');
+    const [newStart, setNewStart] = useState('');
+    const [newEnd, setNewEnd] = useState('');
 
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -39,7 +43,9 @@ const Register = () => {
                     email: user.email,
                     username: newName,
                     instituteName: newInstitute,
-                    projectName: newProject
+                    projectName: newProject,
+                    startDate: newStart,
+                    endDate: newEnd,
                 });
             }
             setName(newName);
@@ -47,7 +53,10 @@ const Register = () => {
             setInstitute(newInstitute);
             setProject(newProject);
             setPassword(newPassword)
+            setStart(newStart)
+            setEnd(newEnd)
 
+            window.location.href = "/home";
         }catch(error) {
             console.log(error.message);
         }
@@ -64,6 +73,12 @@ const Register = () => {
     }
     const handleProjectChange = (e) => {
         setNewProject(e.target.value);
+    }
+    const handleStartChange = (e) => {
+        setNewStart(e.target.value);
+    }
+    const handleEndChange = (e) => {
+        setNewEnd(e.target.value);
     }
 
     return (
@@ -92,6 +107,14 @@ const Register = () => {
                     <label htmlFor="project-name">Project Name: </label>
                     <input placeholder="Enter project name... *" required
                                size='small' id = "project-name" onChange={handleProjectChange}/>
+                </div>
+                <div className='form-row'>
+                    <label htmlFor="start">Start Date: </label>
+                    <input id = "start" type = "date" onChange={handleStartChange}/>
+                </div>
+                <div className='form-row'>
+                    <label htmlFor="end">End Date: </label>
+                    <input type = "date" id = "end" onChange={handleEndChange}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="password">Password: </label>

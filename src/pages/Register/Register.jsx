@@ -3,11 +3,67 @@ import Password from "../../components/Password/Password.jsx";
 import Button from "../../components/Button/Button.jsx"
 import './Register.css'
 import {Link} from "react-router-dom";
+import {useState} from "react";
+import {createUserWithEmailAndPassword} from "firebase/auth"
+import {auth, db} from "../../components/firebase.jsx";
+import {setDoc, doc} from "firebase/firestore"
+
 
 const Register = () => {
 
-    const handleLoginClick = () => {
-        console.log("REGISTER");
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [institute, setInstitute] = useState('');
+    const [project, setProject] = useState('');
+
+    const [newName, setNewName] = useState('');
+    const [newEmail, setNewEmail] = useState('');
+    const [newInstitute, setNewInstitute] = useState('');
+    const [newProject, setNewProject] = useState('');
+
+    const [password, setPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+
+    const handlePasswordChange = (e) => {
+        setNewPassword(e.target.value)
+    }
+
+    const handleRegister = async(e) => {
+        e.preventDefault();
+        try {
+            await createUserWithEmailAndPassword(auth, newEmail, newPassword);
+            const user = auth.currentUser;
+            console.log(user);
+            if(user) {
+                await setDoc(doc(db, "Users", user.uid), {
+                    email: user.email,
+                    username: newName,
+                    instituteName: newInstitute,
+                    projectName: newProject
+                });
+            }
+            setName(newName);
+            setEmail(newEmail);
+            setInstitute(newInstitute);
+            setProject(newProject);
+            setPassword(newPassword)
+
+        }catch(error) {
+            console.log(error.message);
+        }
+    }
+
+    const handleNameChange = (e) => {
+        setNewName(e.target.value);
+    }
+    const handleEmailChange = (e) => {
+        setNewEmail(e.target.value);
+    }
+    const handleInstituteChange = (e) => {
+        setNewInstitute(e.target.value);
+    }
+    const handleProjectChange = (e) => {
+        setNewProject(e.target.value);
     }
 
     return (
@@ -15,38 +71,37 @@ const Register = () => {
             <div className="general-header">
             </div>
 
-            <form action="" className="register-form">
+            <form action="" className="register-form" onSubmit={handleRegister}>
                 <h1 className='form-heading'>Intern Register</h1>
                 <div className='form-row'>
                     <label htmlFor="name">Name: </label>
                     <input placeholder="Enter name... *" required
-                               size='small' id = "name"/>
+                               size='small' id = "name" onChange={handleNameChange}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="email">Email: </label>
                     <input placeholder="Enter email... *" required
-                               size='small' type="email" id = "email"/>
+                               size='small' type="email" id = "email" onChange={handleEmailChange}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="institute">Institute: </label>
                     <input placeholder="Enter institute name... *" required
-                               size='small' id = "institute"/>
+                               size='small' id = "institute" onChange={handleInstituteChange}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="project-name">Project Name: </label>
                     <input placeholder="Enter project name... *" required
-                               size='small' id = "project-name"/>
+                               size='small' id = "project-name" onChange={handleProjectChange}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="password">Password: </label>
-                    <Password id = "password"/>
+                    <Password id = "password" handlePasswordChange={handlePasswordChange}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="confirm-password">Confirm Password: </label>
-                    <Password id = "confirm-password"/>
+                    <Password id = "confirm-password" handlePasswordChange={handlePasswordChange}/>
                 </div>
-                <Button text="Register" buttonClass="register button"
-                        clickHandler={handleLoginClick}/>
+                <Button text="Register" buttonClass="register button"/>
                 <p><Link to = "/login">Account already exists?</Link></p>
             </form>
         </div>

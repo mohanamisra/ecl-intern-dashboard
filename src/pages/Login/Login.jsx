@@ -6,6 +6,8 @@ import './Login.css'
 import {Link} from "react-router-dom";
 import {signInWithEmailAndPassword} from "firebase/auth"
 import {auth} from "../../components/firebase.jsx";
+import boy_image from '../../assets/boy_intern_image.png'
+import girl_image from '../../assets/girl_intern_image.png'
 
 const Login = () => {
 
@@ -37,26 +39,28 @@ const Login = () => {
     }
 
     return (
-        <div className = 'login-container'>
-            <div className="general-header">
-            </div>
-
-            <form action="" className="login-form" onSubmit = {handleLogin}>
-                <h1 className = 'form-heading'>Intern Login</h1>
-                <div className = 'form-row'>
+        <div className='login-container'>
+            <img src={boy_image} alt="Boy Intern" className="intern-image"/>
+            <form action="" className="login-form" onSubmit={handleLogin}>
+                <h1 className='form-heading'>Intern Login</h1>
+                <div className='form-row'>
                     <label htmlFor="email">Email: </label>
-                    <input type = "text" id = "email" required
-                           placeholder = "Enter email..." onChange={handleEmailChange}
-                            value = {newEmail}/>
+                    <input type="text" id="email" required
+                           placeholder="Enter email..."
+                           onChange={handleEmailChange}
+                           value={newEmail}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="password">Password: </label>
-                    <Password id = "password" handlePasswordChange={handlePasswordChange}/>
+                    <Password id="password"
+                              handlePasswordChange={handlePasswordChange}/>
                 </div>
-                <Button text = "Login" buttonClass="login button"/>
-                <p>Forgot Password?</p>
-                <p><Link to = "/register">New user?</Link></p>
+                <Button text="Login" buttonClass="login button"/>
+                <p><Link to="/forgot-password">Forgot Password?</Link></p>
+                <p><Link to="/register">New user?</Link></p>
             </form>
+            <img src={girl_image} alt="Girl Intern"
+                 className="intern-image"/>
         </div>
     );
 };

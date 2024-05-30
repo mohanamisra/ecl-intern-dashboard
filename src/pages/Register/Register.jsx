@@ -7,6 +7,8 @@ import {useState} from "react";
 import {createUserWithEmailAndPassword} from "firebase/auth"
 import {auth, db} from "../../components/firebase.jsx";
 import {setDoc, doc} from "firebase/firestore"
+import boy_image from '../../assets/boy_intern_image.png'
+import girl_image from '../../assets/girl_intern_image.png'
 
 
 const Register = () => {
@@ -82,51 +84,56 @@ const Register = () => {
     }
 
     return (
-        <div className = 'register-container'>
-            <div className="general-header">
-            </div>
-
+        <div className='register-container'>
+            <img src={boy_image} alt="Boy Intern" className="intern-image"/>
             <form action="" className="register-form" onSubmit={handleRegister}>
                 <h1 className='form-heading'>Intern Register</h1>
                 <div className='form-row'>
                     <label htmlFor="name">Name: </label>
                     <input placeholder="Enter name... *" required
-                               size='small' id = "name" onChange={handleNameChange}/>
+                           size='small' id="name" onChange={handleNameChange}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="email">Email: </label>
                     <input placeholder="Enter email... *" required
-                               size='small' type="email" id = "email" onChange={handleEmailChange}/>
+                           size='small' type="email" id="email"
+                           onChange={handleEmailChange}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="institute">Institute: </label>
                     <input placeholder="Enter institute name... *" required
-                               size='small' id = "institute" onChange={handleInstituteChange}/>
+                           size='small' id="institute"
+                           onChange={handleInstituteChange}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="project-name">Project Name: </label>
                     <input placeholder="Enter project name... *" required
-                               size='small' id = "project-name" onChange={handleProjectChange}/>
+                           size='small' id="project-name"
+                           onChange={handleProjectChange}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="start">Start Date: </label>
-                    <input id = "start" type = "date" onChange={handleStartChange}/>
+                    <input id="start" type="date" onChange={handleStartChange}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="end">End Date: </label>
-                    <input type = "date" id = "end" onChange={handleEndChange}/>
+                    <input type="date" id="end" onChange={handleEndChange}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="password">Password: </label>
-                    <Password id = "password" handlePasswordChange={handlePasswordChange}/>
+                    <Password id="password"
+                              handlePasswordChange={handlePasswordChange}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="confirm-password">Confirm Password: </label>
-                    <Password id = "confirm-password" handlePasswordChange={handlePasswordChange}/>
+                    <Password id="confirm-password"
+                              handlePasswordChange={handlePasswordChange}/>
                 </div>
                 <Button text="Register" buttonClass="register button"/>
-                <p><Link to = "/login">Account already exists?</Link></p>
+                <p><Link to="/login">Account already exists?</Link></p>
             </form>
+            <img src={girl_image} alt="Girl Intern"
+                 className="intern-image"/>
         </div>
     );
 };

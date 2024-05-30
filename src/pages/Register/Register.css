@@ -1,17 +1,21 @@
 .register-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     background-color: #f0f4f3;
     font-family: 'Arial', sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
 }
 
-.general-header {
-    text-align: center;
-    padding: 20px;
-    background-color: #2f855a;
-    color: #fff;
-}
+/*.general-header {*/
+/*    text-align: center;*/
+/*    padding: 20px;*/
+/*    background-color: #2f855a;*/
+/*    color: #fff;*/
+/*    width: 100%;*/
+/*}*/
 
 .register-form {
     background-color: #fff;
@@ -19,6 +23,29 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 400px;
+    position: relative;
+}
+
+img {
+    display: block;
+    width: 25%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation-name: float;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% {
+        margin-bottom: 0px;
+    }
+
+    50% {
+        margin-bottom: 50px;
+    }
 }
 
 .form-heading {

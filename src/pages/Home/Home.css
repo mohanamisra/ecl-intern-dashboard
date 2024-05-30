@@ -1,10 +1,9 @@
 .dashboard-container {
-    min-height: 100vh;
+    min-height: 100%;
     display: flex;
 }
 
 .main {
-    background-color: red;
     width: 100%;
 
     display: flex;

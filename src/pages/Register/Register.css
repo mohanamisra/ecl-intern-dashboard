@@ -26,7 +26,7 @@
     position: relative;
 }
 
-img {
+.login-container>img, .register-container>img {
     display: block;
     width: 25%;
     height: auto;

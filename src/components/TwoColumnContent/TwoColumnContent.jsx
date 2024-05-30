@@ -55,15 +55,14 @@ const TwoColumnContent = () => {
             <div className="right-sidebar">
                 <div className="project-history">
                     <h3 className='right-sidebar-heading'>Project History</h3>
-                    <p>Started: {`${userDetails ? userDetails.startDate : ''}`}</p>
-                    <p>Projected End: {`${userDetails ? userDetails.endDate : ''}`}</p>
-                    <p>Tech Stack: </p>
+                    <p>Started: <span className = 'detail'>{`${userDetails ? userDetails.startDate : ''}`}</span></p>
+                    <p>Projected End: <span className = 'detail'>{`${userDetails ? userDetails.endDate : ''}`}</span></p>
                 </div>
-                <div className="team-members">
-                    <h3 className = 'right-sidebar-heading'>Team Members</h3>
-                    <p>John Doe</p>
-                    <p>Alice Doe</p>
-                </div>
+                {/*<div className="team-members">*/}
+                {/*    <h3 className = 'right-sidebar-heading'>Team Members</h3>*/}
+                {/*    <p>John Doe</p>*/}
+                {/*    <p>Alice Doe</p>*/}
+                {/*</div>*/}
             </div>
         </div>
     );

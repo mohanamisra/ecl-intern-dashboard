@@ -9,7 +9,7 @@ import {doc, getDocs} from "firebase/firestore"
 
 
 const ToDoList = ({userId}) => {
-    
+
     const [tasks, setTasks] = useState([]);
     const [newTaskName, setNewTaskName] = useState("");
 
@@ -62,11 +62,11 @@ const ToDoList = ({userId}) => {
                 </button>
             </div>
             <div className = 'tasks-container'>
-                {tasks.map((task) => {
+                {tasks[0] ? tasks.map((task) => {
                     return (
                         <TaskCard key = {task.id} name = {task.name} status = {task.completed} onDelete = {deleteTask}/>
                     )
-                })}
+                }) : <p className = "task-notif">No tasks to show. Add a task to get started!</p>}
             </div>
         </div>
     );

@@ -12,6 +12,7 @@ const TwoColumnContent = () => {
     }
 
     const [userDetails, setUserDetails] = useState(null);
+    const [userId, setUserId] = useState('');
 
     const fetchUserData = async() => {
         auth.onAuthStateChanged((async(user) => {
@@ -19,6 +20,7 @@ const TwoColumnContent = () => {
             const reqDoc = await getDoc(docRef);
             if(reqDoc.exists()) {
                 setUserDetails(reqDoc.data());
+                setUserId(user.uid);
             }
             else {
                 console.log("User not logged in");
@@ -41,7 +43,7 @@ const TwoColumnContent = () => {
                 <div className='goals-section'>
                     <h3 className='section-heading'>Today's Goals:</h3>
                     <div className='daily-goals-container'>
-                        <ToDoList/>
+                        <ToDoList userId = {userId}/>
                     </div>
                 </div>
                 <div className='snapshot-section'>
@@ -58,11 +60,6 @@ const TwoColumnContent = () => {
                     <p>Started: <span className = 'detail'>{`${userDetails ? userDetails.startDate : ''}`}</span></p>
                     <p>Projected End: <span className = 'detail'>{`${userDetails ? userDetails.endDate : ''}`}</span></p>
                 </div>
-                {/*<div className="team-members">*/}
-                {/*    <h3 className = 'right-sidebar-heading'>Team Members</h3>*/}
-                {/*    <p>John Doe</p>*/}
-                {/*    <p>Alice Doe</p>*/}
-                {/*</div>*/}
             </div>
         </div>
     );

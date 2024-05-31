@@ -1,39 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useState} from "react";
 import './ToDoList.css'
 import TaskCard from "../TaskCard/TaskCard.jsx";
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import {collection} from "@firebase/firestore";
+import {auth, db} from "../firebase.jsx";
+import {doc, getDocs} from "firebase/firestore"
 
-const ToDoList = () => {
 
-    const myTasks = [
-        {
-            taskId: 1,
-            name: 'Design landing page',
-            completed: false,
-        },
-        {
-            taskId: 2,
-            name: 'Reach out to investors',
-            completed: false,
-        },
-        {
-            taskId: 3,
-            name: 'Ideate colour theme',
-            completed: false,
-        },
-        {
-            taskId: 4,
-            name: 'Make rudimentary to-do list for goals-section',
-            completed: false,
-        },
-        {
-            taskId: 5,
-            name: 'Email VC',
-            completed: false,
-        }
-    ]
-
-    const [tasks, setTasks] = useState(myTasks);
+const ToDoList = ({userId}) => {
+    
+    const [tasks, setTasks] = useState([]);
     const [newTaskName, setNewTaskName] = useState("");
 
     function handleInputChange(event) {
@@ -59,14 +36,26 @@ const ToDoList = () => {
 
     }
 
+    const query = userId ? collection(db, `Users/${userId}/goals`) : null;
+    const [docs, loading, error] = useCollectionData(query);
+
+    const getUserGoals = async() => {
+        docs ? setTasks(docs) : setTasks([]);
+    }
+
+    useEffect(() => {
+        getUserGoals();
+    }, [docs]);
+
+
     return (
         <div className = 'to-do-list'>
             <div className = 'new-task'>
                 <input
-                type = 'text'
-                placeholder = 'Create task...'
-                value = {newTaskName}
-                onChange = {handleInputChange}
+                    type = 'text'
+                    placeholder = 'Create task...'
+                    value = {newTaskName}
+                    onChange = {handleInputChange}
                 />
                 <button className = 'add-button' onClick = {addTask}>
                     Create
@@ -75,7 +64,7 @@ const ToDoList = () => {
             <div className = 'tasks-container'>
                 {tasks.map((task) => {
                     return (
-                        <TaskCard key = {task.taskId} id = {task.taskId} name = {task.name} status = {task.completed} onDelete = {deleteTask}/>
+                        <TaskCard key = {task.id} name = {task.name} status = {task.completed} onDelete = {deleteTask}/>
                     )
                 })}
             </div>

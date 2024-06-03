@@ -6,7 +6,8 @@ const TaskCard = ({id, name, status, onDelete, onDone}) => {
     const [done, setDone] = useState(status);
 
     const handleCheckBoxChange = () => {
-        onDone(id, status);
+        console.log("Done task ", id);
+        onDone(id);
     }
 
     const handleDeleteTask = () => {

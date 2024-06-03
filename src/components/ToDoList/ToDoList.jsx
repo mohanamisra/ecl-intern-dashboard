@@ -4,7 +4,7 @@ import './ToDoList.css'
 import TaskCard from "../TaskCard/TaskCard.jsx";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import {auth, db} from "../firebase.jsx";
-import {setDoc, doc, query, collection, addDoc, updateDoc, getDocs, deleteDoc} from "firebase/firestore"
+import {setDoc, doc, query, collection, addDoc, updateDoc, getDocs, deleteDoc, getDoc} from "firebase/firestore"
 
 
 const ToDoList = ({userId}) => {
@@ -39,17 +39,15 @@ const ToDoList = ({userId}) => {
         }
     }
 
-    async function doneTask(index) {
+    async function doneTask(updateIndex) {
+        const updateVal = await doc(db, "Users", userId, "goals", updateIndex);
+        const oldTask = (await getDoc(updateVal)).data();
+        const newTask = {...oldTask, completed : !oldTask.completed}
+        await updateDoc(updateVal, newTask);
     }
 
     const query = userId ? collection(db, `Users/${userId}/goals`) : null;
     const [docs, loading, error] = useCollectionData(query);
-
-    const getUserGoals = async() => {
-        docs ? setTasks(docs.map((doc, index) => ({...doc, id : doc.id}))) : setTasks([]);
-    }
-
-    const [val, setVal] = useState([]);
 
     useEffect(() => {
         // getUserGoals();

@@ -3,9 +3,8 @@ import {useState} from "react";
 import './ToDoList.css'
 import TaskCard from "../TaskCard/TaskCard.jsx";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import {collection} from "@firebase/firestore";
 import {auth, db} from "../firebase.jsx";
-import {setDoc, doc} from "firebase/firestore"
+import {setDoc, doc, query, collection, addDoc} from "firebase/firestore"
 
 
 const ToDoList = ({userId}) => {
@@ -19,16 +18,18 @@ const ToDoList = ({userId}) => {
 
     async function addTask(e) {
         e.preventDefault();
+        const newTask = {
+            name: newTaskName,
+            completed: false,
+        }
+        console.log(newTask);
+
         try {
-            await setDoc(doc(db, `Users/${userId}/goals`), {
-                name: newTaskName,
-                completed: false,
-            });
-        } catch (e) {
+            await addDoc(collection(db, `Users/${userId}/goals`), newTask);
+            setNewTaskName("");
+        } catch(e) {
             console.log(e.message);
         }
-        // const newTaskList = [...tasks, {name: newTaskName, completed: false}];
-        // setTasks(newTaskList);
     }
 
     function deleteTask(delIndex) {
@@ -42,7 +43,7 @@ const ToDoList = ({userId}) => {
     }
 
     function doneTask(index) {
-
+        console.log(index + "done");
     }
 
     const query = userId ? collection(db, `Users/${userId}/goals`) : null;

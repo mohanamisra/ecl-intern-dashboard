@@ -4,7 +4,7 @@ import './ToDoList.css'
 import TaskCard from "../TaskCard/TaskCard.jsx";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import {auth, db} from "../firebase.jsx";
-import {setDoc, doc, query, collection, addDoc} from "firebase/firestore"
+import {setDoc, doc, query, collection, addDoc, updateDoc, getDocs, deleteDoc} from "firebase/firestore"
 
 
 const ToDoList = ({userId}) => {
@@ -32,29 +32,34 @@ const ToDoList = ({userId}) => {
         }
     }
 
-    function deleteTask(delIndex) {
+    async function deleteTask(delIndex) {
         if(window.confirm("Are you sure you want to delete this task?")) {
-            setTasks(tasks.filter(task => {
-                    if (task.taskId !== delIndex)
-                        return task;
-                }
-            ))
+            const delVal = await doc(db, "Users", userId, "goals", delIndex);
+            deleteDoc(delVal);
         }
     }
 
-    function doneTask(index) {
-        console.log(index + "done");
+    async function doneTask(index) {
     }
 
     const query = userId ? collection(db, `Users/${userId}/goals`) : null;
     const [docs, loading, error] = useCollectionData(query);
 
     const getUserGoals = async() => {
-        docs ? setTasks(docs) : setTasks([]);
+        docs ? setTasks(docs.map((doc, index) => ({...doc, id : doc.id}))) : setTasks([]);
     }
 
+    const [val, setVal] = useState([]);
+
     useEffect(() => {
-        getUserGoals();
+        // getUserGoals();
+
+        const getData = async() => {
+            const dbVal = await getDocs(collection(db, "Users", userId, "goals"));
+            setTasks(dbVal.docs.map(doc => ({...doc.data(), id: doc.id})))
+        }
+        getData();
+        console.log(userId);
     }, [docs]);
 
 
@@ -74,7 +79,7 @@ const ToDoList = ({userId}) => {
             <div className = 'tasks-container'>
                 {tasks[0] ? tasks.map((task) => {
                     return (
-                        <TaskCard key = {task.id} name = {task.name} status = {task.completed} onDelete = {deleteTask}/>
+                        <TaskCard key = {task.id} id = {task.id} name = {task.name} status = {task.completed} onDelete = {deleteTask} onDone = {doneTask}/>
                     )
                 }) : <p className = "task-notif">No tasks to show. Add a task to get started!</p>}
             </div>

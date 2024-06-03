@@ -2,15 +2,15 @@ import React from 'react';
 import {useState} from "react";
 import './TaskCard.css'
 
-const TaskCard = ({id, name, status, onDelete}) => {
+const TaskCard = ({id, name, status, onDelete, onDone}) => {
     const [done, setDone] = useState(status);
 
     const handleCheckBoxChange = () => {
-        const newDone = !done;
-        setDone(newDone);
+        onDone(id, status);
     }
 
     const handleDeleteTask = () => {
+        console.log("Deleting task with ID:", id);
         onDelete(id);
     }
 

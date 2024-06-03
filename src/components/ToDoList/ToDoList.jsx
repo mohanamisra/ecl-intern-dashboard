@@ -5,7 +5,7 @@ import TaskCard from "../TaskCard/TaskCard.jsx";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import {collection} from "@firebase/firestore";
 import {auth, db} from "../firebase.jsx";
-import {doc, getDocs} from "firebase/firestore"
+import {setDoc, doc} from "firebase/firestore"
 
 
 const ToDoList = ({userId}) => {
@@ -17,9 +17,18 @@ const ToDoList = ({userId}) => {
         setNewTaskName(event.target.value);
     }
 
-    function addTask() {
-        const newTaskList = [...tasks, {name: newTaskName, completed: false}];
-        setTasks(newTaskList);
+    async function addTask(e) {
+        e.preventDefault();
+        try {
+            await setDoc(doc(db, `Users/${userId}/goals`), {
+                name: newTaskName,
+                completed: false,
+            });
+        } catch (e) {
+            console.log(e.message);
+        }
+        // const newTaskList = [...tasks, {name: newTaskName, completed: false}];
+        // setTasks(newTaskList);
     }
 
     function deleteTask(delIndex) {

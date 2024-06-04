@@ -1,0 +1,38 @@
+.supervisor-login-container {
+    display: flex;
+    align-items: center;
+    background-color: #f0f4f3;
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    justify-content: center;
+}
+
+.supervisor-login-form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.boss-img {
+    display: block;
+    width: 25%;
+    height: auto;
+    border-radius: 30%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation-name: float;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.female-boss.boss-img {
+    width: 12%;
+    margin-right: 160px;
+}

@@ -57,7 +57,8 @@ const Login = () => {
                 </div>
                 <Button text="Login" buttonClass="login button"/>
                 <p><Link to="/forgot-password">Forgot Password?</Link></p>
-                <p><Link to="/register">New user?</Link></p>
+                <p><Link to="/register">New intern?</Link></p>
+                <p><Link to="/supervisorlogin">I am a supervisor</Link></p>
             </form>
             <img src={girl_image} alt="Girl Intern"
                  className="intern-image"/>

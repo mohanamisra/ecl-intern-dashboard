@@ -131,6 +131,7 @@ const Register = () => {
                 </div>
                 <Button text="Register" buttonClass="register button"/>
                 <p><Link to="/login">Account already exists?</Link></p>
+                <p><Link to="/supervisorlogin">I am a supervisor</Link></p>
             </form>
             <img src={girl_image} alt="Girl Intern"
                  className="intern-image"/>

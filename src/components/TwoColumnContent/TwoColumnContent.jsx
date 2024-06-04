@@ -1,13 +1,38 @@
 import React, {useEffect, useState} from 'react';
 import './TwoColumnContent.css'
 import Button from "../Button/Button.jsx";
-import {auth, db} from "../firebase.jsx"
-import {doc, getDoc} from "firebase/firestore"
+import {auth, db, imageDB} from "../firebase.jsx"
+import {doc, getDoc, collection, addDoc} from "firebase/firestore"
+import {ref, uploadBytes, getDownloadURL} from "firebase/storage"
+import {v4} from "uuid"
 
 
 const TwoColumnContent = () => {
+    const [img, setImg] = useState(null);
+    const [text, setText] = useState('');
+
+    const handleTextChange = (e) => {
+        const newText = e.target.value;
+        setText(newText);
+    }
     const handleUploadButtonClick = () => {
         console.log("UPLOAD");
+        if(img === null) return;
+        const imgRef = ref(imageDB, `images/${img.name + v4()}`);
+        uploadBytes(imgRef, img)
+            .then((data) => {
+                alert("Screenshot Uploaded");
+                getDownloadURL(data.ref).then(async(val) => {
+                    await setImg(val);
+                    console.log(val);
+                    const valRef = collection(db, "Users", userId, "history");
+                    await addDoc(valRef, {
+                        text: text,
+                        imgUrl: val,
+                    });
+                    console.log("all data uploaded successfully");
+                })
+            })
     }
 
     const [userDetails, setUserDetails] = useState(null);
@@ -42,7 +67,8 @@ const TwoColumnContent = () => {
                 <div className='snapshot-section'>
                     <h3 className='section-heading'>Daily Snapshot:</h3>
                     <div className='daily-snapshot-container'>
-                        <textarea className='textfield'></textarea>
+                        <textarea className='textfield' onChange = {handleTextChange}></textarea>
+                        <input type="file" onChange={(e) => setImg(e.target.files[0])}/>
                         <Button text="Upload" buttonClass="upload button"
                                 clickHandler={handleUploadButtonClick}/>
                     </div>

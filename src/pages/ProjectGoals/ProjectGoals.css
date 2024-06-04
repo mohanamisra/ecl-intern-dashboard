@@ -3,3 +3,7 @@
 
     display: flex;
 }
+
+.project-goals-container>.main>.content-section {
+    padding: 48px;
+}

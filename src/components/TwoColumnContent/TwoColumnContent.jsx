@@ -37,28 +37,30 @@ const TwoColumnContent = () => {
         <div className="content-container">
             <div className="project-details">
                 <div className='project-basic'>
-                    <h3 className = 'section-heading'>Your Project</h3>
-                    <h1 className = 'project-name'>{`${userDetails ? userDetails.projectName : ''}`}</h1>
-                </div>
-                <div className='goals-section'>
-                    <h3 className='section-heading'>Today's Goals:</h3>
-                    <div className='daily-goals-container'>
-                        <ToDoList userId = {userId}/>
-                    </div>
+                    <h3 className='section-heading'>Your Project</h3>
+                    <h1 className='project-name'>{`${userDetails ? userDetails.projectName : ''}`}</h1>
                 </div>
                 <div className='snapshot-section'>
-                    <h3 className = 'section-heading'>Daily Snapshot:</h3>
+                    <h3 className='section-heading'>Daily Snapshot:</h3>
                     <div className='daily-snapshot-container'>
-                        <textarea className = 'textfield'></textarea>
-                        <Button text = "Upload" buttonClass = "upload button" clickHandler = {handleUploadButtonClick}/>
+                        <textarea className='textfield'></textarea>
+                        <Button text="Upload" buttonClass="upload button"
+                                clickHandler={handleUploadButtonClick}/>
                     </div>
+                </div>
+                <div className='feedback-section'>
+                    <h3 className='section-heading'>Latest Feedback:</h3>
                 </div>
             </div>
             <div className="right-sidebar">
                 <div className="project-history">
                     <h3 className='right-sidebar-heading'>Project History</h3>
-                    <p>Started: <span className = 'detail'>{`${userDetails ? userDetails.startDate : ''}`}</span></p>
-                    <p>Projected End: <span className = 'detail'>{`${userDetails ? userDetails.endDate : ''}`}</span></p>
+                    <p>Started: <span
+                        className='detail'>{`${userDetails ? userDetails.startDate : ''}`}</span>
+                    </p>
+                    <p>Projected End: <span
+                        className='detail'>{`${userDetails ? userDetails.endDate : ''}`}</span>
+                    </p>
                 </div>
             </div>
         </div>

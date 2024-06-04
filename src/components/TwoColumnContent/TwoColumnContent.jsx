@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import './TwoColumnContent.css'
-import ToDoList from "../ToDoList/ToDoList.jsx";
 import Button from "../Button/Button.jsx";
 import {auth, db} from "../firebase.jsx"
 import {doc, getDoc} from "firebase/firestore"
@@ -61,6 +60,10 @@ const TwoColumnContent = () => {
                     <p>Projected End: <span
                         className='detail'>{`${userDetails ? userDetails.endDate : ''}`}</span>
                     </p>
+                </div>
+                <div className = 'quote-section'>
+                    <h3 className = 'right-sidebar-heading'>Today's Mantra</h3>
+                    <p className = 'quote'>"Life is a highway."</p>
                 </div>
             </div>
         </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 import './Feedback.css'
+import {db} from "../../components/firebase.jsx";
+import {collection, getDocs} from "firebase/firestore";
 import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 import Header from "../../components/Header/Header.jsx";
 

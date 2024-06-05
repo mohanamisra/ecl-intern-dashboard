@@ -24,8 +24,7 @@ const SupervisorLogin = () => {
             if(supervisorName === doc.data().name) {
                 flag = 1;
                 if(code === doc.data().code) {
-                    window.location.href = "/supervisorview";
-                    console.log("successful");
+                    window.location.href = `supervisorview/${supervisorName}`;
                     return;
                 }
                 else {

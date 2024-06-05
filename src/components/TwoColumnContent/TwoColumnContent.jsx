@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './TwoColumnContent.css'
 import Button from "../Button/Button.jsx";
 import {auth, db, imageDB} from "../firebase.jsx"
-import {doc, getDoc, collection, addDoc} from "firebase/firestore"
+import {doc, getDoc, getDocs, collection, addDoc} from "firebase/firestore"
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage"
 import {v4} from "uuid"
 
@@ -10,6 +10,7 @@ import {v4} from "uuid"
 const TwoColumnContent = () => {
     const [img, setImg] = useState(null);
     const [text, setText] = useState('');
+    const [feedbacks, setFeedbacks] = useState(null);
 
     const handleTextChange = (e) => {
         const newText = e.target.value;
@@ -45,6 +46,9 @@ const TwoColumnContent = () => {
             if(reqDoc.exists()) {
                 setUserDetails(reqDoc.data());
                 setUserId(user.uid);
+                const feedbacksRef = await getDocs(collection(db, "Users", user.uid, "feedback"));
+                const allFeedbacks = feedbacksRef.docs.map(item => ({...item.data(), id: item.id}));
+                setFeedbacks(allFeedbacks);
             }
             else {
                 console.log("User not logged in");
@@ -75,6 +79,13 @@ const TwoColumnContent = () => {
                 </div>
                 <div className='feedback-section'>
                     <h3 className='section-heading'>Latest Feedback:</h3>
+                    <ul>
+                        {feedbacks === null ? <p>No feedbacks yet</p>
+                            : feedbacks.map(feedback => {
+                                return (
+                                    <li key={feedback.id}>{feedback.feedback} by {feedback.supervisorName}</li>)
+                            })}
+                    </ul>
                 </div>
             </div>
             <div className="right-sidebar">

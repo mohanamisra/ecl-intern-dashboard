@@ -64,7 +64,7 @@ const SupervisorLogin = () => {
                 </div>
                 <Button text="Login as SupervisorView" buttonClass="login button" clickHandler={handleSupervisorLogin}/>
                 <p><Link to="/forgot-password">Forgot code?</Link></p>
-                <p><Link to="/register">New intern?</Link></p>
+                <p><Link to="/login">I am an intern</Link></p>
             </form>
             <img src={male_boss} alt="male boss" className="boss-img"/>
         </div>

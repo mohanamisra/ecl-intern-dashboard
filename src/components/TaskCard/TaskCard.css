@@ -30,7 +30,7 @@ input[type = "checkbox"], .checkbox {
 .delete-button {
     min-width: 100px;
     font-weight: 500;
-    background-color: #da3737;
+    background-color: #d9534f;
     color: #f8f8f8;
     border: none;
     border-radius: 25px;
@@ -41,7 +41,7 @@ input[type = "checkbox"], .checkbox {
 }
 
 .delete-button:hover {
-    background-color: #b42d2d;
+    background-color: #c9302c;
 }
 
 .task-card.checked {

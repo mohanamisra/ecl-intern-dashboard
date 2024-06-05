@@ -17,6 +17,24 @@ const SupervisorLogin = () => {
         console.log("supe is logging in");
         console.log(supervisorName);
         console.log(code);
+        let flag = 0;
+
+        const querySnapshot = await getDocs(collection(db, "supervisors"));
+        querySnapshot.forEach(doc => {
+            if(supervisorName === doc.data().name) {
+                flag = 1;
+                if(code === doc.data().code) {
+                    window.location.href = "/supervisorview";
+                    console.log("successful");
+                    return;
+                }
+                else {
+                    alert("Incorrect Code: Please re-enter!");
+                    return;
+                }
+            }
+        })
+        flag === 0 ? alert("Incorrect details: Please re-enter!") : null;
     }
 
     const handleNameChange = (e) => {

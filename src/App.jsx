@@ -9,6 +9,7 @@ import LogOut from "./pages/LogOut/LogOut.jsx"
 import Home from "./pages/Home/Home.jsx"
 import Register from "./pages/Register/Register.jsx"
 import SupervisorLogin from "./pages/SupervisorLogin/SupervisorLogin.jsx";
+import SupervisorView from "./pages/SupervisorView/SupervisorView.jsx";
 import {auth} from "./components/firebase.jsx"
 
 import {Navigate, Route, Routes} from "react-router-dom";
@@ -35,6 +36,7 @@ const App = () => {
                 <Route path="/yourprofile" element = {<YourProfile/>}/>
                 <Route path="/logout" element = {<LogOut/>}/>
                 <Route path="/supervisorlogin" element = {<SupervisorLogin/>}/>
+                <Route path = "/supervisorview" element = {<SupervisorView/>}/>
             </Routes>
         </div>
     );

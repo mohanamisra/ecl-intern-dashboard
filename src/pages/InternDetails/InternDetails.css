@@ -14,3 +14,11 @@
 .section.intern-goals>.to-do-list>.tasks-container>.task-card>.delete-button {
     min-width: 72px;
 }
+
+/*ACTION SECTION STYLING*/
+
+.action-section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

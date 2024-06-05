@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {db} from "../../components/firebase.jsx"
 import {getDocs, collection} from "firebase/firestore"
 import './SupervisorView.css'
+import Button from "../../components/Button/Button.jsx";
 
 const SupervisorView = () => {
     const [interns, setInterns] = useState([]);
@@ -9,13 +10,15 @@ const SupervisorView = () => {
     const fetchInternsList = async() => {
         const docsRef = await getDocs(collection(db, "Users"));
         const newInternsList = [];
-        docsRef.forEach(doc => console.log(doc.data().username));
         docsRef.forEach(doc => {
             const newIntern = doc.data();
-            console.log(newIntern);
             newInternsList.push(newIntern);
         })
         setInterns(newInternsList);
+    }
+
+    const handleDetailsClick = () => {
+        console.log("click");
     }
 
     useEffect(() => {
@@ -28,7 +31,7 @@ const SupervisorView = () => {
             <ul>
                 {interns.map(intern => {
                     return (
-                        <li key = {intern.email}>{intern.username}</li>
+                        <li key = {intern.email}>{intern.username} <Button text = "View Details" buttonClass={"details-button"} clickHandler={handleDetailsClick}/></li>
                     )
                 })}
             </ul>

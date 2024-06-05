@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import {db} from "../../components/firebase.jsx"
 import {getDocs, collection} from "firebase/firestore"
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import './SupervisorView.css'
 import Button from "../../components/Button/Button.jsx";
 
 const SupervisorView = () => {
     const navigate = useNavigate();
+    const {supervisorName} = useParams();
     const [interns, setInterns] = useState([]);
 
     const fetchInternsList = async() => {

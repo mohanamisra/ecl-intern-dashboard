@@ -68,12 +68,12 @@ const InternDetails = () => {
             <div className="all-details-container">
                 <div className="section intern-details">
                     <h3 className="section-heading">Intern Details</h3>
-                    <p className="intern-info">{name}</p>
-                    <p className="intern-info">{email}</p>
-                    <p className="intern-info">{institute}</p>
-                    <p className="intern-info">{project}</p>
-                    <p className="intern-info">{start}</p>
-                    <p className="intern-info">{end}</p>
+                    <p className="intern-info">Name: {name}</p>
+                    <p className="intern-info">Email: {email}</p>
+                    <p className="intern-info">Institute: {institute}</p>
+                    <p className="intern-info">Project: {project}</p>
+                    <p className="intern-info">Start Date: {start}</p>
+                    <p className="intern-info">End Date: {end}</p>
                 </div>
 
                 <div className="section intern-history">

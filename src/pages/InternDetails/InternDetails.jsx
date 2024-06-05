@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react'
-import {useParams} from "react-router-dom"
+import {useParams, useNavigate} from "react-router-dom"
 import {db} from "../../components/firebase.jsx"
-import {doc, getDoc, getDocs, collection, addDoc} from "firebase/firestore"
+import {doc, getDoc, getDocs, collection, addDoc, deleteDoc} from "firebase/firestore"
 import ToDoList from "../../components/ToDoList/ToDoList.jsx"
 import Button from "../../components/Button/Button.jsx"
 import './InternDetails.css'
 
 const InternDetails = () => {
     const {supervisorName, internId} = useParams();
+    const navigate = useNavigate();
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -39,8 +40,15 @@ const InternDetails = () => {
         setText(newText);
     }
 
-    const handleInternDelete = () => {
-        console.log("intern delete");
+    const handleInternDelete = async() => {
+        console.log(internId);
+        if(window.confirm("Are you sure you want to remove this intern from" +
+            " the database?\nWARNING: THIS WILL REMOVE ALL THE DATA RELATED" +
+            " TO THE INTERN PERMANENTLY")) {
+            const delRef = await doc(db, "Users", internId);
+            deleteDoc(delRef);
+            navigate(-1);
+        }
     }
 
     const handleFeedbackSend = async() => {

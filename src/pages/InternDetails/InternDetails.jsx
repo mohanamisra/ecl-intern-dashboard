@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from 'react'
-import {useParams, useNavigate} from "react-router-dom"
-import {db} from "../../components/firebase.jsx"
-import {doc, getDoc, getDocs, collection, addDoc, deleteDoc} from "firebase/firestore"
-import ToDoList from "../../components/ToDoList/ToDoList.jsx"
-import Button from "../../components/Button/Button.jsx"
-import './InternDetails.css'
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from "react-router-dom";
+import { db } from "../../components/firebase.jsx";
+import { doc, getDoc, getDocs, collection, addDoc, deleteDoc } from "firebase/firestore";
+import ToDoList from "../../components/ToDoList/ToDoList.jsx";
+import Button from "../../components/Button/Button.jsx";
+import './InternDetails.css';
 
 const InternDetails = () => {
-    const {supervisorName, internId} = useParams();
+    const { supervisorName, internId } = useParams();
     const navigate = useNavigate();
 
     const [name, setName] = useState('');
@@ -19,17 +19,18 @@ const InternDetails = () => {
 
     const [history, setHistory] = useState(null);
 
-    const fetchInternDetails = async() => {
+    const fetchInternDetails = async () => {
         const internRef = await getDoc(doc(db, "Users", internId));
-        setName(internRef.data().username);
-        setEmail(internRef.data().email);
-        setInstitute(internRef.data().instituteName);
-        setProject(internRef.data().projectName);
-        setStart(internRef.data().startDate);
-        setEnd(internRef.data().endDate);
+        const internData = internRef.data();
+        setName(internData.username);
+        setEmail(internData.email);
+        setInstitute(internData.instituteName);
+        setProject(internData.projectName);
+        setStart(internData.startDate);
+        setEnd(internData.endDate);
 
         const historyRef = await getDocs(collection(db, "Users", internId, "history"));
-        const allHistory = historyRef.docs.map(val => ({...val.data(), id: val.id}));
+        const allHistory = historyRef.docs.map(val => ({ ...val.data(), id: val.id }));
         setHistory(allHistory);
     }
 
@@ -40,25 +41,21 @@ const InternDetails = () => {
         setText(newText);
     }
 
-    const handleInternDelete = async() => {
-        console.log(internId);
-        if(window.confirm("Are you sure you want to remove this intern from" +
-            " the database?\nWARNING: THIS WILL REMOVE ALL THE DATA RELATED" +
-            " TO THE INTERN PERMANENTLY")) {
+    const handleInternDelete = async () => {
+        if (window.confirm("Are you sure you want to remove this intern from the database? WARNING: THIS WILL REMOVE ALL THE DATA RELATED TO THE INTERN PERMANENTLY")) {
             const delRef = await doc(db, "Users", internId);
             deleteDoc(delRef);
             navigate(-1);
         }
     }
 
-    const handleFeedbackSend = async() => {
-        console.log("send feedback");
+    const handleFeedbackSend = async () => {
         setText('');
 
         const feedbackRef = await collection(db, "Users", internId, "feedback");
         await addDoc(feedbackRef, {
-            supervisorName : supervisorName,
-            feedback : text,
+            supervisorName: supervisorName,
+            feedback: text,
         });
     }
 
@@ -67,16 +64,16 @@ const InternDetails = () => {
     }, [])
 
     return (
-        <div className='intern-vew'>
+        <div className='intern-view'>
             <div className="all-details-container">
                 <div className="section intern-details">
                     <h3 className="section-heading">Intern Details</h3>
-                    <p className="intern-name">{name}</p>
-                    <p className="intern-name">{email}</p>
-                    <p className="intern-name">{institute}</p>
-                    <p className="intern-name">{project}</p>
-                    <p className="intern-name">{start}</p>
-                    <p className="intern-name">{end}</p>
+                    <p className="intern-info">{name}</p>
+                    <p className="intern-info">{email}</p>
+                    <p className="intern-info">{institute}</p>
+                    <p className="intern-info">{project}</p>
+                    <p className="intern-info">{start}</p>
+                    <p className="intern-info">{end}</p>
                 </div>
 
                 <div className="section intern-history">
@@ -84,14 +81,14 @@ const InternDetails = () => {
                     <ul>
                         {history !== null ? history.map(item => {
                             return (
-                                <li key={item.id}>
+                                <li key={item.id} className="history-item">
                                     <p>{item.text}</p>
-                                    <a href={item.imgUrl} target="_blank"><img
-                                        src={item.imgUrl} height='200px'
-                                        alt="project history image"/></a>
+                                    <a href={item.imgUrl} target="_blank" rel="noopener noreferrer">
+                                        <img src={item.imgUrl} className="history-image" alt="project history"/>
+                                    </a>
                                 </li>
                             )
-                        }) : <p>NO PROJECT HISTORY</p>}
+                        }) : <p>No Project History</p>}
                     </ul>
                 </div>
 
@@ -103,12 +100,11 @@ const InternDetails = () => {
 
             <div className="action-section">
                 <div className="feedback-section">
-                    <textarea className='textfield'
-                              onChange={handleTextChange} value = {text}></textarea>
-                    <Button text = {"Send"} buttonClass={"feedback-button"} clickHandler={handleFeedbackSend}/>
+                    <textarea className='textfield' onChange={handleTextChange} value={text}></textarea>
+                    <Button text="Send" buttonClass="feedback-button" clickHandler={handleFeedbackSend}/>
                 </div>
                 <div className="delete-section">
-                    <Button text = {"Delete Intern Details"} buttonClass={"delete-button"} clickHandler={handleInternDelete}/>
+                    <Button text="Delete Intern Details" buttonClass="delete-button" clickHandler={handleInternDelete}/>
                 </div>
             </div>
         </div>

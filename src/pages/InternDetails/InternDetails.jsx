@@ -30,7 +30,6 @@ const InternDetails = () => {
         const historyRef = await getDocs(collection(db, "Users", internId, "history"));
         const allHistory = historyRef.docs.map(val => ({...val.data(), id: val.id}));
         setHistory(allHistory);
-        console.log(allHistory);
     }
 
     const [text, setText] = useState('');

@@ -1,0 +1,16 @@
+.all-details-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section.intern-goals {
+    max-width: 30%;
+}
+
+.section.intern-goals>.to-do-list>.tasks-container>.task-card>.task-top {
+    font-size: 16px;
+}
+
+.section.intern-goals>.to-do-list>.tasks-container>.task-card>.delete-button {
+    min-width: 72px;
+}

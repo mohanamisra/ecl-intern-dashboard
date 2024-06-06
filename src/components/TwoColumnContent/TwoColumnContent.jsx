@@ -94,10 +94,10 @@ const TwoColumnContent = () => {
                         className='detail'>{`${userDetails ? userDetails.endDate : ''}`}</span>
                     </p>
                 </div>
-                <div className = 'quote-section'>
-                    <h3 className = 'right-sidebar-heading'>Today's Mantra</h3>
-                    <p className = 'quote'>"Life is a highway."</p>
-                </div>
+                {/*<div className = 'quote-section'>*/}
+                {/*    <h3 className = 'right-sidebar-heading'>Today's Mantra</h3>*/}
+                {/*    <p className = 'quote'>"Life is a highway."</p>*/}
+                {/*</div>*/}
             </div>
         </div>
     );

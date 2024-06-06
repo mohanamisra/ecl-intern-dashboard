@@ -57,6 +57,7 @@ const InternDetails = () => {
             supervisorName: supervisorName,
             feedback: text,
         });
+        alert("Feedback sent!");
     }
 
     useEffect(() => {

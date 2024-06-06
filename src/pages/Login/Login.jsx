@@ -6,8 +6,8 @@ import './Login.css'
 import {Link} from "react-router-dom";
 import {signInWithEmailAndPassword} from "firebase/auth"
 import {auth} from "../../components/firebase.jsx";
-import boy_image from '../../assets/boy_intern_image.png'
-import girl_image from '../../assets/girl_intern_image.png'
+import boy_image from '../../assets/boy_intern_image.webp'
+import girl_image from '../../assets/girl_intern_image.webp'
 
 const Login = () => {
 

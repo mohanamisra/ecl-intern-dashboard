@@ -3,8 +3,8 @@ import './SupervisorLogin.css'
 import React, {useState} from 'react';
 import Button from "../../components/Button/Button.jsx";
 import {Link} from "react-router-dom";
-import female_boss from "../../assets/female_boss.png"
-import male_boss from "../../assets/male_boss.png"
+import female_boss from "../../assets/female_boss.webp"
+import male_boss from "../../assets/male_boss.webp"
 import {db} from "../../components/firebase.jsx";
 import {collection, getDocs} from "firebase/firestore"
 

@@ -7,8 +7,8 @@ import {useState} from "react";
 import {createUserWithEmailAndPassword} from "firebase/auth"
 import {auth, db} from "../../components/firebase.jsx";
 import {setDoc, doc} from "firebase/firestore"
-import boy_image from '../../assets/boy_intern_image.png'
-import girl_image from '../../assets/girl_intern_image.png'
+import boy_image from '../../assets/boy_intern_image.webp'
+import girl_image from '../../assets/girl_intern_image.webp'
 
 
 const Register = () => {

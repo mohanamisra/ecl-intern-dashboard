@@ -7,3 +7,7 @@
 .project-goals-container>.main>.content-section {
     padding: 48px;
 }
+
+.project-goals-container>.main>.content-section>.to-do-list>.tasks-container>.task-card>.delete-button {
+    max-width: 120px;
+}

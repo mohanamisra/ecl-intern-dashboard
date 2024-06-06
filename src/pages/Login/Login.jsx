@@ -52,7 +52,7 @@ const Login = () => {
                 <div className='form-row'>
                     <label htmlFor="password">Password: </label>
                     <Password id="password"
-                              handlePasswordChange={handlePasswordChange}/>
+                              handlePasswordChange={handlePasswordChange} placeholderText={"Enter password..."}/>
                 </div>
                 <Button text="Login" buttonClass="login button"/>
                 <p><Link to="/forgot-password">Forgot Password?</Link></p>

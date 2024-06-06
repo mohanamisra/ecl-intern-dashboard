@@ -29,37 +29,46 @@ const Register = () => {
 
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
+    const [newConfirmPassword, setNewConfirmPassword] = useState('');
 
     const handlePasswordChange = (e) => {
         setNewPassword(e.target.value)
     }
+    const handleConfirmPasswordChange = (e) => {
+        setNewConfirmPassword(e.target.value)
+    }
 
     const handleRegister = async(e) => {
         e.preventDefault();
-        try {
-            await createUserWithEmailAndPassword(auth, newEmail, newPassword);
-            const user = auth.currentUser;
-            if(user) {
-                await setDoc(doc(db, "Users", user.uid), {
-                    email: user.email,
-                    username: newName,
-                    instituteName: newInstitute,
-                    projectName: newProject,
-                    startDate: newStart,
-                    endDate: newEnd,
-                });
-            }
-            setName(newName);
-            setEmail(newEmail);
-            setInstitute(newInstitute);
-            setProject(newProject);
-            setPassword(newPassword)
-            setStart(newStart)
-            setEnd(newEnd)
+        if (newStart !== null && newEnd !== null && newPassword !== "" && newPassword === newConfirmPassword) {
+            try {
+                await createUserWithEmailAndPassword(auth, newEmail, newPassword);
+                const user = auth.currentUser;
+                if(user) {
+                    await setDoc(doc(db, "Users", user.uid), {
+                        email: user.email,
+                        username: newName,
+                        instituteName: newInstitute,
+                        projectName: newProject,
+                        startDate: newStart,
+                        endDate: newEnd,
+                    });
+                }
+                setName(newName);
+                setEmail(newEmail);
+                setInstitute(newInstitute);
+                setProject(newProject);
+                setPassword(newPassword)
+                setStart(newStart)
+                setEnd(newEnd)
 
-            window.location.href = "/home";
-        }catch(error) {
-            console.log(error.message);
+                window.location.href = "/home";
+            }catch(error) {
+                console.log(error.message);
+            }
+        }
+        else {
+            alert("Password and confirm password fields are different");
         }
     }
 
@@ -121,12 +130,12 @@ const Register = () => {
                 <div className='form-row'>
                     <label htmlFor="password">Password: </label>
                     <Password id="password"
-                              handlePasswordChange={handlePasswordChange}/>
+                              handlePasswordChange={handlePasswordChange} value = {password}/>
                 </div>
                 <div className='form-row'>
                     <label htmlFor="confirm-password">Confirm Password: </label>
                     <Password id="confirm-password"
-                              handlePasswordChange={handlePasswordChange}/>
+                              handlePasswordChange={handleConfirmPasswordChange}/>
                 </div>
                 <Button text="Register" buttonClass="register button"/>
                 <p><Link to="/login">Account already exists?</Link></p>

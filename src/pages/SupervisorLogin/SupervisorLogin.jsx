@@ -58,7 +58,7 @@ const SupervisorLogin = () => {
                 <div className='form-row'>
                     <label htmlFor="code">Code: </label>
                     <input type="text" id="code" required
-                           placeholder="Enter supervisor code..." onChange={handleCodeChange}/>
+                           placeholder="Enter supervisor code... *" onChange={handleCodeChange}/>
                 </div>
                 <Button text="Login as Supervisor" buttonClass="login button" clickHandler={handleSupervisorLogin}/>
                 <p><Link to="/forgot-password">Forgot code?</Link></p>

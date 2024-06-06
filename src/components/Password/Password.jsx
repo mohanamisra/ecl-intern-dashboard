@@ -1,40 +1,21 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { useState } from "react";
+import './Password.css'
 
-const Password = ({handlePasswordChange}) => {
-    // const [showPassword, setShowPassword] = useState(false);
+const Password = ({handlePasswordChange, placeholderText}) => {
+    const [showPassword, setShowPassword] = useState(false);
 
-    // const handleClickShowPassword = () => {
-    //     setShowPassword(!showPassword);
-    // };
-
-    // const [password, setPassword] = useState('');
-    // const [newPassword, setNewPassword] = useState('');
+    const handleVisibilityChange = () => {
+        setShowPassword(!showPassword);
+    }
 
     return (
-        <input type = "password" onChange = {handlePasswordChange}/>
-        // <TextField
-        //     size="small"
-        //     type={showPassword ? "text" : "password"}
-        //     label="Enter password..."
-        //     value={password}
-        //     onChange={handlePassword}
-        //     required={true}
-        //     InputProps={{
-        //         endAdornment: (
-        //             <InputAdornment position="end">
-        //                 <IconButton
-        //                     aria-label="toggle password visibility"
-        //                     onClick={handleClickShowPassword}
-        //                     edge="end"
-        //                 >
-        //                     {showPassword ? <VisibilityOff /> : <Visibility />}
-        //                 </IconButton>
-        //             </InputAdornment>
-        //         ),
-        //     }}
-        // />
+        <div className='password-container'>
+            <input type = {showPassword ? `text` : `password`} placeholder={placeholderText}
+                   onChange={handlePasswordChange} className = 'password-field'/>
+            {showPassword ? <Visibility onClick={handleVisibilityChange} className = "eye"/> : <VisibilityOff onClick={handleVisibilityChange} className = "eye"/>}
+        </div>
     );
 };
 

@@ -74,11 +74,13 @@ const TwoColumnContent = () => {
                 <div className='feedback-section'>
                     <h3 className='section-heading'>Latest Feedback:</h3>
                     <ul>
-                        {feedbacks === null ? <p>No feedbacks yet</p>
-                            : feedbacks.map(feedback => {
-                                return (
-                                    <li key={feedback.id}>{feedback.feedback} by {feedback.supervisorName}</li>)
-                            })}
+                        {feedbacks === null ? <p>No feedbacks yet</p> :
+                            feedbacks.map(feedback => (
+                                <li key={feedback.id}>
+                                    {feedback.feedback}<br/>
+                                    <span className = 'feedback-byline'>{feedback.supervisorName}</span>
+                                </li>
+                            ))}
                     </ul>
                 </div>
             </div>

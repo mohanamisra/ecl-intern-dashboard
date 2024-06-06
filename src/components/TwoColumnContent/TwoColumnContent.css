@@ -124,6 +124,11 @@
     font-weight: 500;
 }
 
+.feedback-byline {
+    font-style: italic;
+    font-weight: 600;
+}
+
 @media (max-width: 768px) {
     .content-container {
         flex-direction: column;

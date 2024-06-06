@@ -20,6 +20,7 @@ const SupervisorLogin = () => {
         querySnapshot.forEach(doc => {
             if(supervisorName === doc.data().name) {
                 flag = 1;
+                console.log(doc.data());
                 if(code === doc.data().code) {
                     window.location.href = `supervisorview/${supervisorName}`;
                     return;
@@ -59,7 +60,7 @@ const SupervisorLogin = () => {
                     <input type="text" id="code" required
                            placeholder="Enter supervisor code..." onChange={handleCodeChange}/>
                 </div>
-                <Button text="Login as SupervisorView" buttonClass="login button" clickHandler={handleSupervisorLogin}/>
+                <Button text="Login as Supervisor" buttonClass="login button" clickHandler={handleSupervisorLogin}/>
                 <p><Link to="/forgot-password">Forgot code?</Link></p>
                 <p><Link to="/login">I am an intern</Link></p>
             </form>

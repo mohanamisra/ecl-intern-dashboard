@@ -1,6 +1,6 @@
 .sidebar-container {
     background-color: #215e3f;
-    max-width: 250px;
+    max-width: 230px;
     width: 100%;
     min-height: 100%;
     color: #ffffff;
@@ -54,4 +54,10 @@ ul {
 .Link:active {
     background-color: #e2e8f0;
     color: #2f855a;
+}
+
+@media (max-width: 768px) {
+    .sidebar-container {
+        display: none;
+    }
 }

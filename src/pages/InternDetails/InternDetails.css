@@ -21,10 +21,8 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.section-heading {
-    font-size: 32px;
-    font-weight: 700;
-    color: #509d32;
+.intern-details>.section-heading {
+    font-size: 24px;
     margin-bottom: 16px;
 }
 
@@ -34,7 +32,7 @@
 }
 
 .intern-info {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: #555;
     margin-bottom: 8px;
@@ -42,7 +40,14 @@
 }
 
 .intern-history {
-    flex: 1;
+    flex: 2;
+}
+
+.history-text {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    margin-bottom: 8px;
 }
 
 .intern-history ul {
@@ -62,8 +67,7 @@
 }
 
 .intern-goals {
-    max-width: 40%;
-    flex: 2;
+    flex: 1;
 }
 
 .action-section {
@@ -73,13 +77,13 @@
     gap: 16px;
 }
 
-.feedback-section, .delete-section {
+.action-section>.feedback-section, .delete-section {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.feedback-section {
+.action-section>.feedback-section {
     flex: 2;
 }
 
@@ -107,36 +111,31 @@
 }
 
 .feedback-button {
-    background-color: #509d32;
+    background-color: #417a27;
     color: white;
     border: none;
 }
 
 .feedback-button:hover {
-    background-color: #417a27;
+    background-color: #276749;
 }
 
 .delete-section>.delete-button {
     max-width: 250px;
-    font-size: 20px;
+    font-size: 16px;
     margin-top: auto;
 }
 
-.delete-section>.delete-button:hover {
-    animation: scaleUp 0.09s forwards;
-}
-
-@keyframes scaleUp {
-    0% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(1.1);
-    }
-}
-
-
 .intern-goals>.to-do-list>.tasks-container>.task-card>.delete-button {
     max-width: 100px;
+}
+
+@media (max-width: 768px) {
+    .all-details-container {
+        flex-direction: column;
+    }
+
+    .history-text {
+        text-align: center;
+    }
 }

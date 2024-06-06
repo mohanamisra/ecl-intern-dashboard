@@ -9,5 +9,14 @@
 }
 
 .project-goals-container>.main>.content-section>.to-do-list>.tasks-container>.task-card>.delete-button {
+    font-size: 14px;
     max-width: 120px;
+}
+
+.project-goals-container>.main>.content-section>.to-do-list>.tasks-container>.task-card {
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+
 }

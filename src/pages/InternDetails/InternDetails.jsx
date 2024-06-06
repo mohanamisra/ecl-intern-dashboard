@@ -83,7 +83,7 @@ const InternDetails = () => {
                         {history !== null ? history.map(item => {
                             return (
                                 <li key={item.id} className="history-item">
-                                    <p>{item.text}</p>
+                                    <p className = "history-text">{item.text}</p>
                                     <a href={item.imgUrl} target="_blank" rel="noopener noreferrer">
                                         <img src={item.imgUrl} className="history-image" alt="project history"/>
                                     </a>

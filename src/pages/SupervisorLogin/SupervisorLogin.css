@@ -36,3 +36,9 @@
     width: 12%;
     margin-right: 160px;
 }
+
+@media (max-width: 768px) {
+    .boss-img {
+        display: none;
+    }
+}

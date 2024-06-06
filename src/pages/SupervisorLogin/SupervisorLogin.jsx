@@ -14,9 +14,6 @@ const SupervisorLogin = () => {
     const [code, setCode] = useState('');
     const handleSupervisorLogin = async(e) => {
         e.preventDefault();
-        console.log("supe is logging in");
-        console.log(supervisorName);
-        console.log(code);
         let flag = 0;
 
         const querySnapshot = await getDocs(collection(db, "supervisors"));

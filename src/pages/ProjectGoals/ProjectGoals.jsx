@@ -19,9 +19,6 @@ const ProjectGoals = () => {
                 setUserDetails(reqDoc.data());
                 setUserId(user.uid);
             }
-            else {
-                console.log("User not logged in");
-            }
         }))
     }
 

@@ -11,7 +11,7 @@ const LogOut = () => {
             await auth.signOut();
             window.location.href = "/login";
         }catch(error) {
-            console.log('ERROR LOGGING OUT ',error.message);
+            alert('ERROR LOGGING OUT ',error.message);
         }
     }
 

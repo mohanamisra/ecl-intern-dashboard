@@ -28,7 +28,6 @@ const Login = () => {
         try {
             await signInWithEmailAndPassword(auth, newEmail, newPassword);
             window.location.href = "/home";
-            console.log("Successful");
         }catch(error) {
             console.log(error.message);
         }

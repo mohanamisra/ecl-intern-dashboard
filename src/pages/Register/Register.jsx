@@ -39,7 +39,6 @@ const Register = () => {
         try {
             await createUserWithEmailAndPassword(auth, newEmail, newPassword);
             const user = auth.currentUser;
-            console.log(user);
             if(user) {
                 await setDoc(doc(db, "Users", user.uid), {
                     email: user.email,

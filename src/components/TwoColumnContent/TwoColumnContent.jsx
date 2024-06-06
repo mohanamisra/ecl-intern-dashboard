@@ -17,7 +17,6 @@ const TwoColumnContent = () => {
         setText(newText);
     }
     const handleUploadButtonClick = () => {
-        console.log("UPLOAD");
         if(img === null) return;
         const imgRef = ref(imageDB, `images/${img.name + v4()}`);
         uploadBytes(imgRef, img)
@@ -25,13 +24,11 @@ const TwoColumnContent = () => {
                 alert("Screenshot Uploaded");
                 getDownloadURL(data.ref).then(async(val) => {
                     await setImg(val);
-                    console.log(val);
                     const valRef = collection(db, "Users", userId, "history");
                     await addDoc(valRef, {
                         text: text,
                         imgUrl: val,
                     });
-                    console.log("all data uploaded successfully");
                 })
             })
     }
@@ -49,9 +46,6 @@ const TwoColumnContent = () => {
                 const feedbacksRef = await getDocs(collection(db, "Users", user.uid, "feedback"));
                 const allFeedbacks = feedbacksRef.docs.map(item => ({...item.data(), id: item.id}));
                 setFeedbacks(allFeedbacks);
-            }
-            else {
-                console.log("User not logged in");
             }
         }))
     }

@@ -22,7 +22,6 @@ const ToDoList = ({userId}) => {
             name: newTaskName,
             completed: false,
         }
-        console.log(newTask);
 
         try {
             await addDoc(collection(db, `Users/${userId}/goals`), newTask);
@@ -57,7 +56,6 @@ const ToDoList = ({userId}) => {
             setTasks(dbVal.docs.map(doc => ({...doc.data(), id: doc.id})))
         }
         getData();
-        console.log(userId);
     }, [docs]);
 
 

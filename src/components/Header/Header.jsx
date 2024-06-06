@@ -25,11 +25,7 @@ const Header = () => {
                 const reqDoc = await getDoc(docRef);
                 if (reqDoc.exists()) {
                     setUserDetails(reqDoc.data());
-                } else {
-                    console.log("User not found");
                 }
-            } else {
-                console.log("User not logged in");
             }
         });
     };

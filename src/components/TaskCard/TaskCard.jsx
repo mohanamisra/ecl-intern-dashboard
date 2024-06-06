@@ -10,13 +10,11 @@ const TaskCard = ({id, name, status, onDelete, onDone}) => {
     }, [status]);
 
     const handleCheckBoxChange = () => {
-        console.log("Done task ", id);
         onDone(id);
         setDone(!done);
     }
 
     const handleDeleteTask = () => {
-        console.log("Deleting task with ID:", id);
         onDelete(id);
     }
 

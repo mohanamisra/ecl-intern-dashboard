@@ -63,7 +63,7 @@ const TwoColumnContent = () => {
                     <h1 className='project-name'>{`${userDetails ? userDetails.projectName : ''}`}</h1>
                 </div>
                 <div className='snapshot-section'>
-                    <h3 className='section-heading'>Daily Snapshot:</h3>
+                    <h3 className='section-heading'>Daily Snapshot: </h3>
                     <div className='daily-snapshot-container'>
                         <textarea className='textfield' onChange = {handleTextChange}></textarea>
                         <input type="file" onChange={(e) => setImg(e.target.files[0])}/>

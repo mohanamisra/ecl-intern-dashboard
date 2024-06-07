@@ -56,8 +56,50 @@ ul {
     color: #2f855a;
 }
 
+.sidebar-wrapper {
+    position: relative;
+}
+
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
 @media (max-width: 768px) {
     .sidebar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transition: transform 0.3s ease;
+        z-index: 1;
+        padding-top: 36px;
+        padding-left: 40px;
+
+    }
+
+    .hamburger-menu {
+        display: flex;
+        min-height: 85px;
+    }
+
+    .sidebar-container {
+        transform: translateX(-100%);
+    }
+
+    .sidebar-container.open {
+        transform: translateX(0);
+    }
+
+    .icon {
+        color: white;
+        align-self: center;
+    }
+
+    #dashboard-icon {
         display: none;
     }
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import Password from "../../components/Password/Password.jsx";
 import Button from "../../components/Button/Button.jsx"
 import './Register.css'
 import {Link} from "react-router-dom";
@@ -9,6 +8,7 @@ import {auth, db} from "../../components/firebase.jsx";
 import {setDoc, doc} from "firebase/firestore"
 import boy_image from '../../assets/boy_intern_image.webp'
 import girl_image from '../../assets/girl_intern_image.webp'
+import {Visibility, VisibilityOff} from "@mui/icons-material";
 
 
 const Register = () => {
@@ -91,6 +91,14 @@ const Register = () => {
         setNewEnd(e.target.value);
     }
 
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleVisibilityChange = () => {
+        const newShowPassword = !showPassword;
+        setShowPassword(newShowPassword);
+    }
+
+
     return (
         <div className='register-container'>
             <img src={boy_image} alt="Boy Intern" className="intern-image"/>
@@ -129,13 +137,35 @@ const Register = () => {
                 </div>
                 <div className='form-row'>
                     <label htmlFor="password">Password: </label>
-                    <Password id="password"
-                              handlePasswordChange={handlePasswordChange} value = {password}/>
+                    <div className='password-container'>
+                        <input id="password" required
+                               type={showPassword ? `text` : `password`}
+                               placeholder="Enter password..."
+                               onChange={handlePasswordChange}
+                               className='password-field'/>
+                        {showPassword ?
+                            <Visibility onClick={handleVisibilityChange}
+                                        className="eye"/> :
+                            <VisibilityOff onClick={handleVisibilityChange}
+                                           className="eye"/>}
+                    </div>
+
                 </div>
                 <div className='form-row'>
                     <label htmlFor="confirm-password">Confirm Password: </label>
-                    <Password id="confirm-password"
-                              handlePasswordChange={handleConfirmPasswordChange}/>
+                    <div className='password-container'>
+                        <input id="confirm-password" required
+                               type={showPassword ? `text` : `password`}
+                               placeholder="Enter password..."
+                               onChange={handleConfirmPasswordChange}
+                               className='password-field'/>
+                        {showPassword ?
+                            <Visibility onClick={handleVisibilityChange}
+                                        className="eye"/> :
+                            <VisibilityOff onClick={handleVisibilityChange}
+                                           className="eye"/>}
+                    </div>
+
                 </div>
                 <Button text="Register" buttonClass="register button"/>
                 <p><Link to="/login">Account already exists?</Link></p>

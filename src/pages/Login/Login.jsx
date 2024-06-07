@@ -1,5 +1,4 @@
 import React from 'react';
-import Password from "../../components/Password/Password.jsx";
 import Button from "../../components/Button/Button.jsx"
 import {useState} from "react";
 import './Login.css'
@@ -8,8 +7,21 @@ import {signInWithEmailAndPassword} from "firebase/auth"
 import {auth} from "../../components/firebase.jsx";
 import boy_image from '../../assets/boy_intern_image.webp'
 import girl_image from '../../assets/girl_intern_image.webp'
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+
 
 const Login = () => {
+
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    if(showPassword == null)
+        setShowPassword(false);
+
+    const handleVisibilityChange = () => {
+        const newShowPassword = !showPassword;
+        setShowPassword(newShowPassword);
+    }
 
     const [email, setEmail] = useState('');
     const [newEmail, setNewEmail] = useState('');
@@ -51,8 +63,18 @@ const Login = () => {
                 </div>
                 <div className='form-row'>
                     <label htmlFor="password">Password: </label>
-                    <Password id="password"
-                              handlePasswordChange={handlePasswordChange} placeholderText={"Enter password..."}/>
+                    <div className='password-container'>
+                        <input id = "password" required
+                            type={showPassword ? `text` : `password`}
+                               placeholder="Enter password..."
+                               onChange={handlePasswordChange}
+                               className='password-field'/>
+                        {showPassword ?
+                            <Visibility onClick={handleVisibilityChange}
+                                        className="eye"/> :
+                            <VisibilityOff onClick={handleVisibilityChange}
+                                           className="eye"/>}
+                    </div>
                 </div>
                 <Button text="Login" buttonClass="login button"/>
                 <p><Link to="/forgot-password">Forgot Password?</Link></p>
